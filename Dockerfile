@@ -1,5 +1,9 @@
-FROM ruby:alpine
-RUN apk add --no-cache curl jq
-RUN gem install sinatra
-COPY . .
-CMD ruby server.rb
+FROM node:lts-alpine
+
+ENV PORT=4567
+
+COPY . /code
+WORKDIR /code
+
+CMD ["npm", "start"]
+
