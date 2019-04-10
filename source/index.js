@@ -43,14 +43,17 @@ const getMenu = () => {
 };
 
 http.createServer(function (req, res) {
+  const headers = {
+    'Content-Type': 'text/plain; charset=utf-8',
+  };
   console.log('request');
   return getMenu().then((result) => {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.writeHead(200, headers);
     res.write(result.join('\n'));
     res.end();
   }).catch((err) => {
     console.error(err);
-    res.writeHead(500, {'Content-Type': 'text/plain'});
+    res.writeHead(500, headers);
     res.write('shit happened');
     res.end();
   });
