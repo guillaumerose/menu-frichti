@@ -1,0 +1,11 @@
+{
+  "name": "menu-frichti",
+  "version": "1.0.0",
+  "description": "",
+  "main": "source/index.js",
+  "scripts": {
+    "start": "node source"
+  },
+  "author": "",
+  "license": "ISC"
+}
