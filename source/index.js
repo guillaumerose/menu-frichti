@@ -36,7 +36,7 @@ const getMenu = () => {
       if (!result[section]) return res;
       for (const item of result[section].items) {
         if (!item.product) continue;
-        res.push(`${section} - ${item.product.title}`);
+        res.push(`${result[section].label} - ${item.product.title}`);
       }
       return res;
     }, []));
@@ -45,13 +45,13 @@ const getMenu = () => {
 http.createServer(function (req, res) {
   console.log('request');
   return getMenu().then((result) => {
-    res.writeHead(200, {'Content-Type': 'application/json'});
-    res.write(JSON.stringify(result));
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.write(result.join('\n'));
     res.end();
   }).catch((err) => {
     console.error(err);
-    res.writeHead(500, {'Content-Type': 'application/json'});
-    res.write(JSON.stringify({error: 'shit happened'}));
+    res.writeHead(500, {'Content-Type': 'text/plain'});
+    res.write('shit happened');
     res.end();
   });
 }).listen(port);
