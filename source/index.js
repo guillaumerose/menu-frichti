@@ -37,6 +37,9 @@ const getMenu = () => {
       if (!result[section]) return res;
       for (const item of result[section].items) {
         if (!item.product) continue;
+        if (item.product.inventoryLevel === 'OOS') {
+          continue;
+        }
         res.push(`${result[section].label} - ${item.product.title}`);
       }
       return res;
