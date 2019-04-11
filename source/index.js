@@ -19,6 +19,7 @@ const fetchFrichti = () => new Promise((resolve, reject) => {
 
 const getMenu = () => {
   const sections = [
+    'entrees-antipasti',
     'entrees-soupes',
     'entrees-salades',
     'plats-pates',
